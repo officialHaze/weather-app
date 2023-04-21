@@ -1,0 +1,78 @@
+.form,
+.input_wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.form {
+	gap: 3rem;
+}
+
+.heading {
+	font-family: "Gloria Hallelujah", cursive;
+	text-align: center;
+	padding: 3rem 0;
+}
+
+.heading > h1 {
+	/* font-size: 1.5rem; */
+	width: 35rem;
+}
+
+.input_wrapper {
+	gap: 0.5rem;
+}
+
+.input {
+	outline: none;
+	border: none;
+	border-radius: 1rem;
+	padding: 1rem 0.85rem;
+	background: #a173a048;
+	backdrop-filter: blur(0.2rem);
+	font-size: 1rem;
+}
+
+.input::placeholder {
+	color: rgba(255, 255, 255, 0.534);
+}
+
+.btn_wrapper {
+	text-align: center;
+}
+
+.btn {
+	border: none;
+	outline: none;
+	border-radius: 5rem;
+	padding: 0.65rem 2rem;
+	background: #8c52ff;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background: #7937ff;
+}
+
+/* poppins font family  */
+.input,
+.input_wrapper,
+.btn {
+	font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (max-width: 640px) {
+	.heading {
+		font-size: 0.85rem;
+        padding: 2rem 0;
+	}
+
+	.heading > h1 {
+		width: 100%;
+	}
+
+	.input {
+		font-size: 0.9rem;
+	}
+}

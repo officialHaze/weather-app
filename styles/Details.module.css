@@ -1,0 +1,69 @@
+.details {
+	background: white;
+	color: black;
+	height: 100%;
+	width: 100%;
+	border-radius: 3.25rem 3.25rem 0 0;
+	overflow: hidden;
+	padding: 3rem 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	position: absolute;
+	top: 0;
+	transition: transform 0.5s;
+	cursor: pointer;
+}
+
+.hr {
+	width: 2.5rem;
+	height: 0;
+	border: 2px solid rgba(0, 0, 0, 0.158);
+}
+
+.weather_icon {
+	width: 100%;
+	height: 100%;
+}
+
+/* forecast  */
+.forecast_details {
+	display: flex;
+	gap: 2rem;
+	font-size: 0.85rem;
+}
+
+.forecast_icon_wrapper {
+	width: 2.5rem;
+	height: 2.5rem;
+}
+
+.forecast_temp {
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+.weather_info_wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* extra details  */
+.extra_details {
+	padding: 2rem 1rem;
+}
+
+@media only screen and (max-height: 800px) {
+	.details {
+		padding: 2rem 1rem;
+	}
+	.forecast_temp{
+		font-size: 1.15rem;
+	}
+	.forecast_time{
+		font-size: 0.8rem;
+	}
+}
