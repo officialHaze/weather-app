@@ -19,6 +19,12 @@ export default function ForecastToday({ lat, lon }: Props) {
 					<div
 						className={styles.weather_info_wrapper}
 						key={i}>
+						<div>
+							<p className={styles.forecast_time}>{timePeriod}</p>
+						</div>
+						<div>
+							<p className={styles.forecast_temp}>{temp}°</p>
+						</div>
 						<div className={styles.forecast_icon_wrapper}>
 							<img
 								className={styles.weather_icon}
@@ -27,10 +33,7 @@ export default function ForecastToday({ lat, lon }: Props) {
 							/>
 						</div>
 						<div>
-							<p className={styles.forecast_time}>{timePeriod}</p>
-						</div>
-						<div>
-							<p className={styles.forecast_temp}>{temp}°</p>
+							<p className={styles.forecast_desc}>{obj.weather[0].description}</p>
 						</div>
 					</div>
 				);

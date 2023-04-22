@@ -66,6 +66,8 @@ interface CurrentWeatherData {
 	};
 }
 
+type AnimationHookType = [showDetails: boolean, handleClick: () => void];
+
 export const useCityInput = (initialValue: string): any => {
 	const [city, setCity] = useState(initialValue);
 
@@ -357,4 +359,72 @@ export const useDiff = (type: string, lat: string, lon: string) => {
 	}, [nextDayForecast, weather, type]);
 
 	return diff;
+};
+
+export const useAnimation = (): AnimationHookType => {
+	const [showDetails, setShowDetails] = useState(false);
+
+	const handleClick = () => {
+		if (!showDetails) {
+			setShowDetails(true); //set the state to true only when it is false
+		} else {
+			setShowDetails(false); //set the state to false only when it is true
+		}
+	};
+
+	return [showDetails, handleClick];
+};
+
+export const useFilterForecastData = (forecastList: ForecastData[]) => {
+	//filter the forecast data based on date
+	const day1List: ForecastData[] = forecastList.filter((data: ForecastData) => {
+		return new Date(data.dt_txt).getDate() === new Date().getDate() + 1;
+	});
+	const day2List: ForecastData[] = forecastList.filter((data: ForecastData) => {
+		return new Date(data.dt_txt).getDate() === new Date().getDate() + 2;
+	});
+	const day3List: ForecastData[] = forecastList.filter((data: ForecastData) => {
+		return new Date(data.dt_txt).getDate() === new Date().getDate() + 3;
+	});
+	const day4List: ForecastData[] = forecastList.filter((data: ForecastData) => {
+		return new Date(data.dt_txt).getDate() === new Date().getDate() + 4;
+	});
+
+	//get the list of per day temperatures
+	const day1Temps = day1List.map(data => {
+		return data.main.temp;
+	});
+	const day2Temps = day2List.map(data => {
+		return data.main.temp;
+	});
+	const day3Temps = day3List.map(data => {
+		return data.main.temp;
+	});
+	const day4Temps = day4List.map(data => {
+		return data.main.temp;
+	});
+
+	return [day1Temps, day2Temps, day3Temps, day4Temps];
+};
+
+export const useAverageTemp = (lat: string, lon: string) => {
+	const [avgTemp, setAvgTemp] = useState<number[]>([]);
+	useEffect(() => {
+		if (lat && lon) {
+			getForecast(lat, lon)
+				.then(forecastList => {
+					const [day1Temps, day2Temps, day3Temps, day4Temps] =
+						useFilterForecastData(forecastList);
+
+					const day1AvgTemp = getAverage(day1Temps);
+					const day2AvgTemp = getAverage(day2Temps);
+					const day3AvgTemp = getAverage(day3Temps);
+					const day4AvgTemp = getAverage(day4Temps);
+					setAvgTemp([day1AvgTemp, day2AvgTemp, day3AvgTemp, day4AvgTemp]);
+				})
+				.catch(err => console.log(err));
+		}
+	}, [lat, lon]);
+
+	return avgTemp;
 };

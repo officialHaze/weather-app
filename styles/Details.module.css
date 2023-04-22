@@ -1,5 +1,5 @@
 .details {
-	background: white;
+	background: whitesmoke;
 	color: black;
 	height: 100%;
 	width: 100%;
@@ -14,6 +14,7 @@
 	top: 0;
 	transition: transform 0.5s;
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .hr {
@@ -30,6 +31,7 @@
 /* forecast  */
 .forecast_details {
 	display: flex;
+	flex-direction: column;
 	gap: 2rem;
 	font-size: 0.85rem;
 }
@@ -46,9 +48,8 @@
 
 .weather_info_wrapper {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	gap: 0.5rem;
+	gap: 2rem;
 }
 
 /* extra details  */
@@ -59,11 +60,12 @@
 @media only screen and (max-height: 800px) {
 	.details {
 		padding: 2rem 1rem;
+		border-radius: 0;
 	}
-	.forecast_temp{
+	.forecast_temp {
 		font-size: 1.15rem;
 	}
-	.forecast_time{
+	.forecast_time {
 		font-size: 0.8rem;
 	}
 }

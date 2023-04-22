@@ -7,9 +7,15 @@ import {
 	useCurrentWeatherIcon,
 	useForecastWeatherIcon,
 	useTempFontColor,
+	useDiff,
+	useAnimation,
 } from "@/lib/hooks";
 import { MdLocationOn } from "react-icons/md";
 import Details from "./Details";
+import DiffMeter from "./DiffMeter";
+import { HiBars3BottomRight } from "react-icons/hi2";
+import isDataCached from "@/lib/isDataCached";
+import Router from "next/router";
 import styles from "@/styles/CurrentWeatherDetails.module.css";
 
 interface Props {
@@ -34,6 +40,8 @@ export default function CurrentWeatherDetails(props: Props) {
 	const weatherIcon = useCurrentWeatherIcon(props.lat, props.lon, props.localTime);
 
 	const fontColor = useTempFontColor();
+
+	const [showDetails, handleClick] = useAnimation();
 
 	useMemo(() => {
 		const serialized_time = localTimeSerializer(props.localTime);
@@ -78,24 +86,48 @@ export default function CurrentWeatherDetails(props: Props) {
 		setWeekDay(weekDay);
 	}, []);
 
+	//clear the cached data and redirect user to the landing page to set up new location
+	const resetLocation = () => {
+		if (isDataCached()) {
+			localStorage.removeItem("city_coordinates");
+			Router.push("/");
+		}
+	};
+
 	return (
 		<section className={styles.current_weather_section}>
 			<div
 				className={styles.screen}
 				style={{ backgroundImage: `url(${background ? background : ""})` }}>
 				<div className={styles.current_weather_details_wrapper}>
-					<div>
-						<h2
-							style={{ display: "flex", alignItems: "center" }}
-							className={styles.city}>
-							<MdLocationOn />
-							{locationData?.city},{locationData?.country}
-						</h2>
-					</div>
-					<div>
-						<h4 className={styles.weekday}>
-							{weekDay}, {locationData?.localTime}
-						</h4>
+					<div className={styles.screen_head}>
+						<div>
+							<div>
+								<h2
+									style={{
+										display: "flex",
+										alignItems: "center",
+										cursor: "pointer",
+									}}
+									className={styles.city}
+									onClick={resetLocation}>
+									<MdLocationOn />
+									{locationData?.city},{locationData?.country}
+								</h2>
+							</div>
+							<div>
+								<h4 className={styles.weekday}>
+									{weekDay}, {locationData?.localTime}
+								</h4>
+							</div>
+						</div>
+						<div className={styles.ham_menu_wrapper}>
+							<h1
+								className={styles.ham_menu}
+								onClick={handleClick}>
+								<HiBars3BottomRight />
+							</h1>
+						</div>
 					</div>
 					<div className={styles.current_weather_wrapper}>
 						<div className={styles.current_temp_wrapper}>
@@ -148,14 +180,32 @@ export default function CurrentWeatherDetails(props: Props) {
 						</div>
 					</div>
 				</div>
+				<div className={styles.current_overview_wrapper}>
+					<div className={styles.current_overview}>
+						<div>
+							<div>
+								<h4>{currentWeather?.main.humidity}%</h4>
+								<h4>Humidity</h4>
+								<DiffMeter diff={useDiff("humidity", props.lat, props.lon)} />
+							</div>
+							<div>
+								<h4>{currentWeather?.wind.speed} km/hr</h4>
+								<h4>Wind Speed</h4>
+								<DiffMeter diff={useDiff("wind", props.lat, props.lon)} />
+							</div>
+							<div>
+								<h4>{currentWeather ? currentWeather.visibility / 1000 : 0} kms</h4>
+								<h4>Visibility</h4>
+								<DiffMeter diff={useDiff("visibility", props.lat, props.lon)} />
+							</div>
+						</div>
+					</div>
+				</div>
 				<Details
 					lat={props.lat}
 					lon={props.lon}
-				/>
-
-				<div
-					className={styles.border_radius_down}
-					style={{ backgroundImage: `url(${background})` }}
+					showDetails={showDetails}
+					handleClick={handleClick}
 				/>
 			</div>
 		</section>
