@@ -4,8 +4,11 @@ import { useEffect } from "react";
 import CurrentWeatherDetails from "@/components/CurrentWeatherDetails";
 import { useLocationDetails, useBackground } from "@/lib/hooks";
 import Head from "next/head";
-import styles from "@/styles/Dashboard.module.css";
 import Footer from "@/components/Footer";
+import { Quicksand } from "next/font/google";
+import styles from "@/styles/Dashboard.module.css";
+
+const quicksand = Quicksand({ weight: ["400", "600", "700"], subsets: ["latin"] });
 
 export default function dashboard() {
 	useEffect(() => {
@@ -28,9 +31,13 @@ export default function dashboard() {
 					rel="icon"
 					href="/weather-app-icon.png"
 				/>
+				<meta
+					name="description"
+					content="Minimalist Weather App created by Moinak Dey"
+				/>
 			</Head>
 			<main
-				className={styles.main}
+				className={`${styles.main} ${quicksand.className}`}
 				style={{
 					backgroundImage: `url(${background ? background : ""})`,
 				}}>

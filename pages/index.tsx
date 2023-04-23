@@ -26,8 +26,8 @@ export default function Home() {
 			</Head>
 			<main className={styles.main}>
 				<LandingPageForm />
+				<Footer />
 			</main>
-			<Footer />
 		</>
 	);
 }

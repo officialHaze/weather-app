@@ -4,7 +4,7 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head>
-				<link
+				{/* <link
 					rel="preconnect"
 					href="https://fonts.googleapis.com"
 				/>
@@ -15,11 +15,7 @@ export default function Document() {
 				<link
 					href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Poppins:wght@400;800&display=swap"
 					rel="stylesheet"
-				/>
-				<meta
-					name="description"
-					content="Minimalist Weather App created by Moinak Dey"
-				/>
+				/> */}
 			</Head>
 			<body>
 				<Main />
