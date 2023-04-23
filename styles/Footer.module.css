@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Poppins:wght@400;800&family=Quicksand:wght@500;600;700&family=Roboto+Slab:wght@900&display=swap");
+
+.footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    gap: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    padding: 2rem;
+}
+
+.socials_wrapper{
+    display: flex;
+    gap: 1rem;
+}

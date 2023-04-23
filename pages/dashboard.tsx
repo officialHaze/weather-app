@@ -3,7 +3,9 @@ import Router from "next/router";
 import { useEffect } from "react";
 import CurrentWeatherDetails from "@/components/CurrentWeatherDetails";
 import { useLocationDetails, useBackground } from "@/lib/hooks";
+import Head from "next/head";
 import styles from "@/styles/Dashboard.module.css";
+import Footer from "@/components/Footer";
 
 export default function dashboard() {
 	useEffect(() => {
@@ -15,12 +17,26 @@ export default function dashboard() {
 	const background = useBackground();
 
 	return (
-		<main
-			className={styles.main}
-			style={{
-				backgroundImage: `url(${background ? background : ""})`,
-			}}>
-			<CurrentWeatherDetails {...cityDetails} />
-		</main>
+		<>
+			<Head>
+				<title>Minimalist Weather App</title>
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1"
+				/>
+				<link
+					rel="icon"
+					href="/weather-app-icon.png"
+				/>
+			</Head>
+			<main
+				className={styles.main}
+				style={{
+					backgroundImage: `url(${background ? background : ""})`,
+				}}>
+				<CurrentWeatherDetails {...cityDetails} />
+				<Footer />
+			</main>
+		</>
 	);
 }

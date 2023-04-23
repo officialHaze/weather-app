@@ -1,9 +1,10 @@
-import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import Head from "next/head";
 import { useLayoutEffect } from "react";
 import Router from "next/router";
 import LandingPageForm from "@/components/LandingPageForm";
 import isDataCached from "@/lib/isDataCached";
+import Footer from "@/components/Footer";
 
 export default function Home() {
 	//if there is cached data in regards to city details, redirect to dashboard
@@ -20,12 +21,13 @@ export default function Home() {
 				/>
 				<link
 					rel="icon"
-					href="/favicon.ico"
+					href="/weather-app-icon.png"
 				/>
 			</Head>
 			<main className={styles.main}>
 				<LandingPageForm />
 			</main>
+			<Footer />
 		</>
 	);
 }

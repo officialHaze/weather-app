@@ -3,9 +3,7 @@ import { localTimeSerializer, tempSerializer } from "@/lib/serializers";
 import {
 	useCurrentWeather,
 	useBackground,
-	useForecast,
 	useCurrentWeatherIcon,
-	useForecastWeatherIcon,
 	useTempFontColor,
 	useDiff,
 	useAnimation,

@@ -74,7 +74,7 @@ export default function LineChart({ lat, lon }: Props) {
 	}, [avgTemps]); //set chart data
 
 	return (
-		<div className={styles.line_chart_container}>
+		<section className={styles.line_chart_container}>
 			<h1>Average Temperature per day</h1>
 			<div className={styles.line_chart_wrapper}>
 				{chartData && (
@@ -96,6 +96,6 @@ export default function LineChart({ lat, lon }: Props) {
 					/>
 				)}
 			</div>
-		</div>
+		</section>
 	);
 }

@@ -111,7 +111,7 @@ export const useLocationDetails = () => {
 				lat: serialized_data.lat,
 				lon: serialized_data.lon,
 			};
-			getLocalTime()
+			getLocalTime(latLon)
 				.then(localtime => {
 					setCityDetails({
 						city: serialized_data.city,
@@ -420,12 +420,7 @@ export const useAverageTemp = (lat: string, lon: string) => {
 					const day2AvgTemp = getAverage(day2Temps);
 					const day3AvgTemp = getAverage(day3Temps);
 					const day4AvgTemp = getAverage(day4Temps);
-					setAvgTemp([
-						day1AvgTemp,
-						day2AvgTemp,
-						day3AvgTemp,
-						day4AvgTemp,
-					]);
+					setAvgTemp([day1AvgTemp, day2AvgTemp, day3AvgTemp, day4AvgTemp]);
 				})
 				.catch(err => console.log(err));
 		}

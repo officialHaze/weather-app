@@ -130,6 +130,7 @@
 	}
 	.screen {
 		border-radius: 0;
+		box-shadow: none;
 	}
 	.current_overview_wrapper {
 		padding: 1rem;
