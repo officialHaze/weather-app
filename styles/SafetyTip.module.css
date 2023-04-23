@@ -1,7 +1,6 @@
 .safety_tip_container {
 	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
+	gap: 1rem;
 	padding: 1rem 2rem;
 	box-shadow: 0 7px 20px rgba(122, 122, 122, 0.3);
 	border-radius: 2rem;
@@ -23,4 +22,19 @@
 	width: 65%;
 	line-height: 1.5;
     padding: 0 0.5rem;
+	display: flex;
+	align-items: center;
+}
+
+@media only screen and (max-width:640px){
+	.safety_tip_container{
+		border-radius: 1.5rem;
+	}
+	.therm_icon_wrapper{
+		width: 4rem;
+		height: 4rem;
+	}
+	.tip_wrapper{
+		font-size: 0.9rem;
+	}
 }

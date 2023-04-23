@@ -8,12 +8,10 @@
 	padding: 3rem 0;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	gap: 1rem;
 	position: absolute;
 	top: 0;
 	transition: transform 0.5s;
-	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
 }
 
@@ -32,6 +30,7 @@
 .forecast_details {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 2rem;
 	font-size: 0.85rem;
 }
@@ -55,12 +54,24 @@
 /* extra details  */
 .extra_details {
 	padding: 2rem 1rem;
+	height: 100%;
 }
 
-@media only screen and (max-height: 800px) {
+/* back_btn */
+.back_btn {
+	width: fit-content;
+	padding: 0.25rem 2rem;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 640px) {
 	.details {
-		padding: 2rem 1rem;
+		padding: 2rem 0.25rem;
 		border-radius: 0;
+	}
+	.extra_details{
+		padding: 2rem 0.25rem;
 	}
 	.forecast_temp {
 		font-size: 1.15rem;

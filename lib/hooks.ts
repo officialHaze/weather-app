@@ -412,7 +412,7 @@ export const useAverageTemp = (lat: string, lon: string) => {
 	useEffect(() => {
 		if (lat && lon) {
 			getForecast(lat, lon)
-				.then(forecastList => {
+				.then((forecastList: ForecastData[]) => {
 					const [day1Temps, day2Temps, day3Temps, day4Temps] =
 						useFilterForecastData(forecastList);
 
@@ -420,7 +420,12 @@ export const useAverageTemp = (lat: string, lon: string) => {
 					const day2AvgTemp = getAverage(day2Temps);
 					const day3AvgTemp = getAverage(day3Temps);
 					const day4AvgTemp = getAverage(day4Temps);
-					setAvgTemp([day1AvgTemp, day2AvgTemp, day3AvgTemp, day4AvgTemp]);
+					setAvgTemp([
+						day1AvgTemp,
+						day2AvgTemp,
+						day3AvgTemp,
+						day4AvgTemp,
+					]);
 				})
 				.catch(err => console.log(err));
 		}
