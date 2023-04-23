@@ -32,7 +32,7 @@ export default function LandingPageForm() {
 					<button
 						className={styles.btn}
 						type="submit">
-						Get Started
+						Continue
 					</button>
 				</div>
 			</form>

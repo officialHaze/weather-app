@@ -242,6 +242,9 @@ export const useCurrentWeatherIcon = (lat: string, lon: string, localTime: strin
 			case "Wind":
 				setWeatherIcon(weatherIcons.wind);
 				break;
+			case "Mist":
+				setWeatherIcon(weatherIcons.mist);
+				break;
 			default:
 				break;
 		}
@@ -291,6 +294,11 @@ export const useForecastWeatherIcon = (lat: string, lon: string) => {
 				case "Wind":
 					setForecastIcons(prevState => {
 						return [...prevState, weatherIcons.wind];
+					});
+					break;
+				case "Mist":
+					setForecastIcons(prevState => {
+						return [...prevState, weatherIcons.mist];
 					});
 					break;
 				default:

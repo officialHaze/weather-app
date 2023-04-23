@@ -32,7 +32,7 @@ export default function ForecastToday({ lat, lon }: Props) {
 								alt="weather icon"
 							/>
 						</div>
-						<div style={{color:'rgba(122, 122, 122, 0.85)'}}>
+						<div style={{color:'rgba(122, 122, 122, 0.85)', width:'5rem'}}>
 							<p className={styles.forecast_desc}>{obj.weather[0].description}</p>
 						</div>
 					</div>

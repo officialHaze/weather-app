@@ -70,19 +70,21 @@ export default function CurrentWeatherDetails(props: Props) {
 	}, [currentWeather]);
 
 	useEffect(() => {
-		const weekDays = [
-			"Sunday",
-			"Monday",
-			"Tuesday",
-			"Wednesday",
-			"Thursday",
-			"Friday",
-			"Saturday",
-		];
-		const currentDate = new Date();
-		const weekDay = weekDays[currentDate.getDay()];
-		setWeekDay(weekDay);
-	}, []);
+		if (locationData) {
+			const weekDays = [
+				"Sunday",
+				"Monday",
+				"Tuesday",
+				"Wednesday",
+				"Thursday",
+				"Friday",
+				"Saturday",
+			];
+			const currentDate = new Date(props.localTime);
+			const weekDay = weekDays[currentDate.getDay()];
+			setWeekDay(weekDay);
+		}
+	}, [props]);
 
 	//clear the cached data and redirect user to the landing page to set up new location
 	const resetLocation = () => {

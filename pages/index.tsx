@@ -4,7 +4,6 @@ import { useLayoutEffect } from "react";
 import Router from "next/router";
 import LandingPageForm from "@/components/LandingPageForm";
 import isDataCached from "@/lib/isDataCached";
-import Footer from "@/components/Footer";
 
 export default function Home() {
 	//if there is cached data in regards to city details, redirect to dashboard
@@ -26,7 +25,6 @@ export default function Home() {
 			</Head>
 			<main className={styles.main}>
 				<LandingPageForm />
-				<Footer />
 			</main>
 		</>
 	);
