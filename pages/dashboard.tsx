@@ -2,7 +2,7 @@ import isDataCached from "@/lib/isDataCached";
 import Router from "next/router";
 import { useEffect } from "react";
 import CurrentWeatherDetails from "@/components/CurrentWeatherDetails";
-import { useLocationDetails, useBackground } from "@/lib/hooks";
+import { useLocationDetails, useBackground, useAnimation } from "@/lib/hooks";
 import Head from "next/head";
 import Footer from "@/components/Footer";
 import { Quicksand } from "next/font/google";
@@ -18,6 +18,8 @@ export default function dashboard() {
 	const cityDetails = useLocationDetails();
 
 	const background = useBackground();
+
+	const [showDetails, handleClick] = useAnimation();
 
 	return (
 		<>
@@ -41,8 +43,12 @@ export default function dashboard() {
 				style={{
 					backgroundImage: `url(${background ? background : ""})`,
 				}}>
-				<CurrentWeatherDetails {...cityDetails} />
-				<Footer />
+				<CurrentWeatherDetails
+					showDetails={showDetails}
+					handleClick={handleClick}
+					{...cityDetails}
+				/>
+				{!showDetails && <Footer />}
 			</main>
 		</>
 	);

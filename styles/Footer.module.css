@@ -13,3 +13,9 @@
     display: flex;
     gap: 1rem;
 }
+
+@media only screen and (max-width:640px){
+    .footer{
+        font-size: 0.8rem;
+    }
+}

@@ -4,7 +4,7 @@
 	height: 100%;
 	width: 100%;
 	border-radius: 3.25rem 3.25rem 0 0;
-	overflow: hidden;
+	overflow: auto;
 	padding: 3rem 0;
 	display: flex;
 	flex-direction: column;
@@ -13,6 +13,27 @@
 	top: 0;
 	transition: transform 0.5s;
 	-webkit-tap-highlight-color: transparent;
+}
+
+/* customizing the scrollbar  */
+/* width */
+.details::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.details::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.details::-webkit-scrollbar-thumb {
+  background: #88888891;
+}
+
+/* Handle on hover */
+.details::-webkit-scrollbar-thumb:hover {
+  background: #555555bb;
 }
 
 .hr {
@@ -70,7 +91,7 @@
 		padding: 2rem 0.25rem;
 		border-radius: 0;
 	}
-	.extra_details{
+	.extra_details {
 		padding: 2rem 0.25rem;
 	}
 	.forecast_temp {

@@ -22,6 +22,8 @@ interface Props {
 	lat: string;
 	lon: string;
 	localTime: string;
+	showDetails: boolean;
+	handleClick: () => void;
 }
 
 export default function CurrentWeatherDetails(props: Props) {
@@ -38,8 +40,6 @@ export default function CurrentWeatherDetails(props: Props) {
 	const weatherIcon = useCurrentWeatherIcon(props.lat, props.lon, props.localTime);
 
 	const fontColor = useTempFontColor();
-
-	const [showDetails, handleClick] = useAnimation();
 
 	useMemo(() => {
 		const serialized_time = localTimeSerializer(props.localTime);
@@ -124,7 +124,7 @@ export default function CurrentWeatherDetails(props: Props) {
 						<div className={styles.ham_menu_wrapper}>
 							<h1
 								className={styles.ham_menu}
-								onClick={handleClick}>
+								onClick={props.handleClick}>
 								<HiBars3BottomRight />
 							</h1>
 						</div>
@@ -204,8 +204,8 @@ export default function CurrentWeatherDetails(props: Props) {
 				<Details
 					lat={props.lat}
 					lon={props.lon}
-					showDetails={showDetails}
-					handleClick={handleClick}
+					showDetails={props.showDetails}
+					handleClick={props.handleClick}
 				/>
 			</div>
 		</section>
